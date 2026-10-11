@@ -1,0 +1,23 @@
+
+{
+  "name": "auraauth-by-payal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Secure authentication web app by Payal Makani",
+  "scripts": {
+    "start": "node api/[...path].js",
+    "build": "echo Build complete"
+  },
+  "engines": {
+    "node": "22.x"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5"
+  }
+}
