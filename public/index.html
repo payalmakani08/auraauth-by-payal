@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090914">
+  <meta name="description" content="AuraAuth — secure, elegant authentication by Payal Makani.">
+  <title>AuraAuth — Secure Your Space</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/script.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <div class="ambient ambient-three"></div>
+  <canvas id="particles" aria-hidden="true"></canvas>
+
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="AuraAuth home">
+      <span class="brand-icon">✳</span>
+      <span>Aura<span class="accent">Auth</span></span>
+    </a>
+    <div class="top-right">
+      <span class="secure-label"><span class="live-dot"></span> SECURE ACCESS</span>
+      <button id="themeToggle" class="icon-button" aria-label="Toggle theme" title="Toggle theme">☼</button>
+    </div>
+  </header>
+
+  <main class="main-shell">
+    <section class="hero">
+      <div class="eyebrow"><span class="eyebrow-line"></span> YOUR SPACE. YOUR RULES.</div>
+      <h1>Security meets<br><span class="gradient-text">simplicity.</span></h1>
+      <p class="hero-copy">A calmer, smarter way to access your world. Sign in securely and pick up right where you belong.</p>
+
+      <div class="feature-row">
+        <div class="feature"><span class="feature-icon">◈</span><span>Private by design</span></div>
+        <div class="feature"><span class="feature-icon">✧</span><span>Secure sessions</span></div>
+        <div class="feature"><span class="feature-icon">⌁</span><span>Made for you</span></div>
+      </div>
+
+      <div class="quote-card">
+        <div class="quote-mark">“</div>
+        <p>Your digital life deserves a space that feels as safe as it looks.</p>
+        <div class="quote-author"><span class="avatar-small">P</span><span><strong>Payal Makani</strong><small>Creator of AuraAuth</small></span></div>
+      </div>
+    </section>
+
+    <section class="auth-wrap">
+      <div id="authCard" class="glass-card">
+        <div class="card-orb"></div>
+        <div class="card-heading">
+          <div class="mini-logo">✳</div>
+          <span class="tiny-label">AURA ID</span>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Authentication mode">
+          <button class="tab active" id="loginTab" role="tab" aria-selected="true" type="button">Sign in</button>
+          <button class="tab" id="registerTab" role="tab" aria-selected="false" type="button">Create account</button>
+        </div>
+
+        <div id="formHeading" class="form-heading">
+          <h2>Welcome back<span class="accent">.</span></h2>
+          <p>Enter your details to access your space.</p>
+        </div>
+
+        <form id="authForm">
+          <div id="nameField" class="field hidden">
+            <label for="name">Full name</label>
+            <div class="input-wrap"><span class="input-icon">♙</span><input id="name" name="name" type="text" autocomplete="name" maxlength="60" placeholder="Your name"></div>
+          </div>
+
+          <div class="field">
+            <label for="email">Email address</label>
+            <div class="input-wrap"><span class="input-icon">✉</span><input id="email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="you@example.com" required></div>
+          </div>
+
+          <div class="field">
+            <div class="label-row"><label for="password">Password</label><span id="passwordHint" class="field-hint">Keep it private</span></div>
+            <div class="input-wrap"><span class="input-icon">⌑</span><input id="password" name="password" type="password" autocomplete="current-password" minlength="10" maxlength="72" placeholder="Enter your password" required><button id="togglePassword" class="password-toggle" type="button" aria-label="Show password">Show</button></div>
+            <div id="strengthBox" class="strength-box hidden"><div class="strength-track"><span id="strengthFill"></span></div><span id="strengthText">Password strength</span></div>
+          </div>
+
+          <div id="confirmField" class="field hidden">
+            <label for="confirmPassword">Confirm password</label>
+            <div class="input-wrap"><span class="input-icon">✓</span><input id="confirmPassword" type="password" autocomplete="new-password" maxlength="72" placeholder="Enter password again"></div>
+          </div>
+
+          <div id="loginExtras" class="form-options">
+            <label class="check-label"><input id="rememberCheck" type="checkbox"><span>Remember this device</span></label>
+            <span class="muted-small">JWT-secured</span>
+          </div>
+
+          <button id="submitButton" class="primary-button" type="submit"><span id="submitText">Sign in securely</span><span class="button-arrow">↗</span></button>
+          <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="divider"><span></span><small>PROTECTED BY AURA</small><span></span></div>
+        <div class="security-note"><span class="shield">⬡</span><span>Your password is encrypted with a one-way hash. It is never stored as plain text.</span></div>
+      </div>
+
+      <div id="dashboard" class="glass-card dashboard hidden">
+        <div class="dashboard-top"><span class="tiny-label">YOUR PRIVATE SPACE</span><span class="session-pill"><span class="live-dot"></span> SESSION ACTIVE</span></div>
+        <div class="profile-avatar" id="profileAvatar">P</div>
+        <p class="eyebrow centered">YOU'RE SIGNED IN</p>
+        <h2 class="dashboard-title">Hello, <span id="userName" class="gradient-text">Payal</span><span class="accent">.</span></h2>
+        <p class="dashboard-copy">Your personal space is ready. You're securely authenticated.</p>
+        <div class="profile-panel">
+          <div class="profile-row"><span>Full name</span><strong id="profileName">—</strong></div>
+          <div class="profile-row"><span>Email</span><strong id="profileEmail">—</strong></div>
+          <div class="profile-row"><span>Authentication</span><strong class="green-text">JWT verified ✓</strong></div>
+          <div class="profile-row"><span>Session</span><strong>HTTP-only cookie</strong></div>
+        </div>
+        <button id="logoutButton" class="primary-button logout-button" type="button"><span>Sign out securely</span><span class="button-arrow">↗</span></button>
+        <p id="dashboardMessage" class="form-message" role="status"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© 2026 AuraAuth · Crafted by <strong>Payal Makani</strong></span>
+    <span class="footer-right"><span class="live-dot"></span> Designed with security in mind</span>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
